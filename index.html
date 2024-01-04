@@ -1,37 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Age calculator app</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="/style/style.css" />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <title>Frontend Mentor | Age calculator app</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <header>
+        <form action="/submit" action="post">
+          <div class="form-conatiner">
+            <label for="day"
+              >DAY <br />
+              <input type="number" name="day" placeholder="DD" required />
+            </label>
+            <label for="month"
+              >MONTH <br />
+              <input type="number" name="month" placeholder="MM" required />
+            </label>
+            <label for="year"
+              >YEAR <br />
+              <input type="number" name="year" placeholder="YYYY" required />
+            </label>
+          </div>
 
-  Day
-  DD
+          <div class="line-and-arrow">
+            <div class="line"></div>
+            <!-- The type image tells the browser to use this image as a submit button. -->
+            <input
+              type="image"
+              src="/assets/images/icon-arrow.svg"
+              alt="Arrow pointing towords bottom"
+              class="arrow highlight"
+              value="submit"
+            />
+          </div>
+        </form>
+      </header>
 
-  Month
-  MM
-
-  Year
-  YYYY
-
-  -- years
-  -- months
-  -- days
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+      <main>
+        <!-- The result goes here -->
+        <table>
+          <tr>
+            <td class="highlight">--</td>
+            <td>years</td>
+          </tr>
+          <tr>
+            <td class="highlight">--</td>
+            <td>months</td>
+          </tr>
+          <tr>
+            <td class="highlight">--</td>
+            <td>days</td>
+          </tr>
+        </table>
+      </main>
+    </div>
+    <footer>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">Harkaran Singh Khaira</a>.
+      </div>
+    </footer>
+  </body>
 </html>
