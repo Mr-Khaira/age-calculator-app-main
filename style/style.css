@@ -49,6 +49,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  font-size: 115%;
 }
 
 body {
@@ -56,28 +57,36 @@ body {
   font-family: "Poppins";
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 main {
-  font-size: 64px;
+  font-size: 32px;
   font-weight: 800;
+  box-sizing: border-box;
 }
 
 .main-container {
+  width: 50%;
   background-color: hsl(0, 0%, 100%);
-  padding: 50px;
-  border-radius: 15px;
+  padding: 25px;
+  border-radius: 20px;
+  border-bottom-right-radius: 200px;
 }
 
 .line {
   background-color: hsl(0, 0%, 86%);
   height: 1px;
-  min-width: 600px;
+  width: 80%;
+  min-width: 480px;
 }
 
+/* Set the media of line as well remove rhe min-width as on. */
+
 input {
-  font-size: 24px;
+  font-size: 12px;
   font-weight: bold;
   border: 1px solid hsl(0, 0%, 86%);
   border-radius: 10px;
@@ -86,8 +95,9 @@ input {
 }
 
 input[type="number"] {
-  height: 60px;
-  width: 140px;
+  height: 40px;
+  width: 70%;
+  max-width: 140px;
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -118,7 +128,7 @@ input[type="number"] {
 .arrow {
   background-color: hsl(259, 100%, 65%);
   border-radius: 100%;
-  padding: 20px;
+  padding: 15px;
   border: none;
 }
 
