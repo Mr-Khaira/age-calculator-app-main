@@ -88,6 +88,10 @@ input {
   margin-top: 10px;
 }
 
+input:focus {
+  outline: none;
+}
+
 input[type="number"] {
   font-size: x-large;
   height: 50px;
@@ -143,7 +147,7 @@ input[type="number"] {
   color: hsl(228, 45%, 44%);
 }
 
-@media screen and (min-width: 400px) and (max-width: 600px) {
+@media screen and (min-width: 400px) and (max-width: 650px) {
   .main-container {
     width: 100%;
   }
@@ -156,4 +160,21 @@ input[type="number"] {
     position: absolute;
     max-width: 100%;
   }
+}
+
+/* DOM related css */
+
+.empty-input {
+  border-color: hsl(0, 100%, 67%);
+}
+
+.lable-allert {
+  color: hsl(0, 100%, 67%);
+}
+
+#error {
+  display: none;
+  font-style: italic;
+  font-size: xx-small;
+  color: hsl(0, 100%, 67%);
 }
