@@ -57,7 +57,7 @@ body {
   font-family: "Poppins";
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 100vh;
 }
@@ -69,18 +69,12 @@ main {
 }
 
 .main-container {
+  margin-top: 70px;
   width: 50%;
   background-color: hsl(0, 0%, 100%);
   padding: 25px;
   border-radius: 20px;
   border-bottom-right-radius: 200px;
-}
-
-.line {
-  background-color: hsl(0, 0%, 86%);
-  height: 1px;
-  width: 80%;
-  min-width: 480px;
 }
 
 /* Set the media of line as well remove rhe min-width as on. */
@@ -89,14 +83,15 @@ input {
   font-size: 12px;
   font-weight: bold;
   border: 1px solid hsl(0, 0%, 86%);
-  border-radius: 10px;
+  padding: 5px 15px;
+  border-radius: 6px;
   margin-top: 10px;
-  padding-left: 15px;
 }
 
 input[type="number"] {
-  height: 40px;
-  width: 70%;
+  font-size: x-large;
+  height: 50px;
+  width: 80%;
   max-width: 140px;
 }
 input[type="number"]::-webkit-inner-spin-button,
@@ -114,8 +109,7 @@ input[type="number"] {
 .form-conatiner {
   display: flex;
   flex-direction: row;
-  gap: 15px;
-  font-size: small;
+  font-size: x-small;
   font-weight: bold;
   color: hsl(0, 1%, 44%);
 }
@@ -123,6 +117,12 @@ input[type="number"] {
 .line-and-arrow {
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+.line {
+  background-color: hsl(0, 0%, 86%);
+  height: 1px;
+  width: 80%;
 }
 
 .arrow {
@@ -141,4 +141,19 @@ input[type="number"] {
 }
 .attribution a {
   color: hsl(228, 45%, 44%);
+}
+
+@media screen and (min-width: 400px) and (max-width: 600px) {
+  .main-container {
+    width: 100%;
+  }
+
+  .arrow {
+    position: relative;
+    right: center;
+  }
+  .line {
+    position: absolute;
+    max-width: 100%;
+  }
 }
