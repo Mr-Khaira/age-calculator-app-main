@@ -147,7 +147,7 @@ input[type="number"] {
   color: hsl(228, 45%, 44%);
 }
 
-@media screen and (min-width: 400px) and (max-width: 650px) {
+@media screen and (min-width: 360px) and (max-width: 650px) {
   .main-container {
     width: 100%;
   }
@@ -172,7 +172,7 @@ input[type="number"] {
   color: hsl(0, 100%, 67%);
 }
 
-#error {
+.error {
   display: none;
   font-style: italic;
   font-size: xx-small;

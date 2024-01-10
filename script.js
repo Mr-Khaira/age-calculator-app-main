@@ -11,15 +11,6 @@ const monthLabel = document.getElementById("monthLabel");
 const year = document.getElementById("year");
 const yearLabel = document.getElementById("yearLabel");
 
-const errorMessage1 = document.getElementsById("error1");
-const errorMessage2 = document.getElementsById("error2");
-const errorMessage3 = document.getElementsById("error3");
-
-errorMessage1.innerText =
-  errorMessage2.innerText =
-  errorMessage3.innerText =
-    "This field is required";
-
 const form = document.getElementById("form");
 const button = document.getElementById("submitButton");
 
@@ -39,23 +30,41 @@ year.addEventListener("focus", function () {
 });
 
 function requiredField(dayMonthYear, labelName) {
-  if (dayMonthYear.value === "") {
+  // Creating an error message
+  let errorMessage = document.createElement("div");
+  errorMessage.className = "error";
+  errorMessage.textContent = "This field is required";
+
+  // Adding error functionality
+
+  function ErrorActivate() {
+    errorMessage.style.display = "block";
     dayMonthYear.classList.add("empty-input");
     labelName.classList.add("lable-allert");
-    errorMessage[0].style.display = "block";
+  }
+
+  function ErrorDeactivate() {
+    errorMessage.style.display = "none";
+    dayMonthYear.classList.remove("empty-input");
+    labelName.classList.remove("lable-allert");
+  }
+
+  if (dayMonthYear.value === "") {
+    let exist = labelName.getElementsByClassName("error");
+    if (exist.length > 0) {
+    } else {
+      labelName.appendChild(errorMessage);
+    }
+
+    ErrorActivate();
   }
   dayMonthYear.addEventListener("input", function () {
-    console.log(dayMonthYear.value);
     if (dayMonthYear.value !== "") {
-      dayMonthYear.classList.remove("empty-input");
-      labelName.classList.remove("lable-allert");
-      errorMessage[0].style.display = "none";
+      ErrorDeactivate();
     } else {
-      dayMonthYear.classList.add("empty-input");
-      labelName.classList.add("lable-allert");
-      errorMessage[0].style.display = "block";
+      ErrorActivate();
     }
   });
 }
 
-/* To Do : Error message dilema */
+/* To Do : Logic for the age calculation */
