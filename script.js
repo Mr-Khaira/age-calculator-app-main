@@ -1,9 +1,5 @@
 "use strict";
 
-// let day = document.getElementsByClassName("day");
-
-// console.log(day.innerHTML);
-
 const day = document.getElementById("day");
 const dayLabel = document.getElementById("dayLabel");
 const month = document.getElementById("month");
@@ -16,6 +12,11 @@ const button = document.getElementById("submitButton");
 
 form.addEventListener("submit", (obj) => {
   obj.preventDefault();
+  console.log("day -", day.value);
+  console.log("Month -", month.value);
+  console.log("Year -", year.value);
+  let m = month.value - 1;
+  console.log(new Date(year.value, m, day.value));
 });
 
 day.addEventListener("focus", function () {
