@@ -6,17 +6,21 @@ const month = document.getElementById("month");
 const monthLabel = document.getElementById("monthLabel");
 const year = document.getElementById("year");
 const yearLabel = document.getElementById("yearLabel");
+const displayYear = document.getElementById("yearValue");
 
 const form = document.getElementById("form");
 const button = document.getElementById("submitButton");
 
 form.addEventListener("submit", (obj) => {
   obj.preventDefault();
-  console.log("day -", day.value);
-  console.log("Month -", month.value);
-  console.log("Year -", year.value);
-  let m = month.value - 1;
-  console.log(new Date(year.value, m, day.value));
+  // console.log("day -", day.value);
+  // console.log("Month -", month.value);
+  // console.log("Year -", year.value);
+  let myMonth = month.value;
+  console.log(new Date(year.value, myMonth - 1, day.value));
+  let currDate = new Date();
+  displayYear.innerHTML = currDate.getFullYear() - year.value;
+  console.log("Month - ", myMonth - (currDate.getMonth() + 1));
 });
 
 day.addEventListener("focus", function () {
@@ -51,13 +55,12 @@ function requiredField(dayMonthYear, labelName) {
   }
 
   if (dayMonthYear.value === "") {
+    ErrorActivate();
     let exist = labelName.getElementsByClassName("error");
     if (exist.length > 0) {
     } else {
       labelName.appendChild(errorMessage);
     }
-
-    ErrorActivate();
   }
   dayMonthYear.addEventListener("input", function () {
     if (dayMonthYear.value !== "") {
@@ -68,4 +71,4 @@ function requiredField(dayMonthYear, labelName) {
   });
 }
 
-/* To Do : Logic for the age calculation */
+/* To Do : Logic for the age calculation line - 19 - set logic as if the month has been pased in the cirrent year or not. */
