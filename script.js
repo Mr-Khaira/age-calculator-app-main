@@ -7,6 +7,8 @@ const monthLabel = document.getElementById("monthLabel");
 const year = document.getElementById("year");
 const yearLabel = document.getElementById("yearLabel");
 const displayYear = document.getElementById("yearValue");
+const displayMonth = document.getElementById("monthValue");
+const displayDay = document.getElementById("dayValue");
 
 const form = document.getElementById("form");
 const button = document.getElementById("submitButton");
@@ -16,12 +18,17 @@ form.addEventListener("submit", (obj) => {
   // console.log("day -", day.value);
   // console.log("Month -", month.value);
   // console.log("Year -", year.value);
-  let myMonth = month.value;
-  console.log(new Date(year.value, myMonth - 1, day.value));
-  let currDate = new Date();
-  displayYear.innerHTML = currDate.getFullYear() - year.value;
-  console.log("Month - ", myMonth - (currDate.getMonth() + 1));
 });
+
+function age(birthDay, birthMonth, birthYear) {
+  let currDate = new Date();
+  let yearsDiff = currDate.getFullYear() - birthYear;
+  let monthDiff = birthMonth - (currDate.getMonth() + 1);
+  let dayDiff = birthDay - currDate.getDay();
+  displayYear.innerHTML = yearsDiff;
+  displayMonth.innerHTML = monthDiff;
+  displayDay.innerHTML = dayDiff;
+}
 
 day.addEventListener("focus", function () {
   requiredField(day, dayLabel);
