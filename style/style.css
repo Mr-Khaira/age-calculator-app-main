@@ -173,7 +173,6 @@ input[type="number"] {
 }
 
 .error {
-  display: none;
   font-style: italic;
   font-size: xx-small;
   color: hsl(0, 100%, 67%);

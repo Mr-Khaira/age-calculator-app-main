@@ -15,16 +15,65 @@ const button = document.getElementById("submitButton");
 
 form.addEventListener("submit", (obj) => {
   obj.preventDefault();
-  // console.log("day -", day.value);
-  // console.log("Month -", month.value);
-  // console.log("Year -", year.value);
+
+  age(Number(day.value), Number(month.value), Number(year.value));
 });
 
 function age(birthDay, birthMonth, birthYear) {
-  let currDate = new Date();
-  let yearsDiff = currDate.getFullYear() - birthYear;
-  let monthDiff = birthMonth - (currDate.getMonth() + 1);
-  let dayDiff = birthDay - currDate.getDay();
+  let today = new Date();
+  console.log("Beginning with - ", birthDay, birthMonth, birthYear);
+
+  let currentDate = today.getDate();
+  let currentMonth = today.getMonth() + 1;
+  let currentYear = today.getFullYear();
+
+  let yearsDiff = currentYear - birthYear;
+  let monthDiff = currentMonth - birthMonth;
+  let dayDiff = currentDate - birthDay;
+
+  if (birthDay > currentDate && birthMonth >= currentMonth) {
+    yearsDiff--;
+  }
+
+  if (currentMonth > birthMonth) {
+    yearsDiff--;
+  }
+
+  if (birthMonth >= currentMonth) {
+    monthDiff = 12 - birthMonth + currentMonth;
+  }
+
+  if (birthDay > currentDate) {
+    let daysInTheMonth = new Date(birthYear, birthMonth, 0).getDate();
+    console.log(
+      "days - ",
+      daysInTheMonth,
+      "birthDay - ",
+      birthDay,
+      " currentDate - ",
+      currentDate
+    );
+
+    if (daysInTheMonth === 31) {
+      monthDiff--;
+
+      dayDiff = daysInTheMonth - birthDay + currentDate;
+    } else if (daysInTheMonth === 30) {
+      monthDiff--;
+      dayDiff = daysInTheMonth - birthDay + currentDate + 1;
+    } else {
+      monthDiff--;
+      dayDiff =
+        new Date(birthYear, birthMonth, 0).getDate() +
+        birthDay -
+        currentDate +
+        1;
+    }
+  }
+  if (birthDay < currentDate) {
+    yearsDiff--;
+  }
+
   displayYear.innerHTML = yearsDiff;
   displayMonth.innerHTML = monthDiff;
   displayDay.innerHTML = dayDiff;
@@ -78,4 +127,4 @@ function requiredField(dayMonthYear, labelName) {
   });
 }
 
-/* To Do : Logic for the age calculation line - 19 - set logic as if the month has been pased in the cirrent year or not. */
+/* To Do : Keep Moving forword. */
