@@ -21,7 +21,6 @@ form.addEventListener("submit", (obj) => {
 
 function age(birthDay, birthMonth, birthYear) {
   let today = new Date();
-  console.log("Beginning with - ", birthDay, birthMonth, birthYear);
 
   let currentDate = today.getDate();
   let currentMonth = today.getMonth() + 1;
@@ -31,47 +30,21 @@ function age(birthDay, birthMonth, birthYear) {
   let monthDiff = currentMonth - birthMonth;
   let dayDiff = currentDate - birthDay;
 
-  if (birthDay > currentDate && birthMonth >= currentMonth) {
-    yearsDiff--;
-  }
-
-  if (currentMonth > birthMonth) {
-    yearsDiff--;
-  }
-
-  if (birthMonth >= currentMonth) {
-    monthDiff = 12 - birthMonth + currentMonth;
+  if (birthMonth > currentMonth) {
+    monthDiff = 12 - birthMonth + currentMonth; // Remaning months of this year has to be added to the months until the birthday in the next year.
+    yearsDiff--; // Birthday is not yet here so -1.
   }
 
   if (birthDay > currentDate) {
+    monthDiff--; // NOT a complemete month, ie the dff is less than even 28.
     let daysInTheMonth = new Date(birthYear, birthMonth, 0).getDate();
-    console.log(
-      "days - ",
-      daysInTheMonth,
-      "birthDay - ",
-      birthDay,
-      " currentDate - ",
-      currentDate
-    );
+    dayDiff = daysInTheMonth - birthDay + currentDate + 1; // Compensating 1 day.
 
     if (daysInTheMonth === 31) {
-      monthDiff--;
-
       dayDiff = daysInTheMonth - birthDay + currentDate;
-    } else if (daysInTheMonth === 30) {
-      monthDiff--;
-      dayDiff = daysInTheMonth - birthDay + currentDate + 1;
-    } else {
-      monthDiff--;
-      dayDiff =
-        new Date(birthYear, birthMonth, 0).getDate() +
-        birthDay -
-        currentDate +
-        1;
+    } else if (daysInTheMonth === 29) {
+      dayDiff = daysInTheMonth - birthDay + currentDate + 2; // Compensating 2 days.
     }
-  }
-  if (birthDay < currentDate) {
-    yearsDiff--;
   }
 
   displayYear.innerHTML = yearsDiff;
@@ -127,4 +100,4 @@ function requiredField(dayMonthYear, labelName) {
   });
 }
 
-/* To Do : Keep Moving forword. */
+/* To Do : Data validation. */
